@@ -4,9 +4,9 @@ A Flask REST API for tracking superheroes and their superpowers. This applicatio
 
 ## Author
 
-**Your Name**
-Contact: your-email@example.com
-GitHub: [@yourusername](https://github.com/yourusername)
+**Kelvin Murithi Johnson**
+Contact: kevrith@gmail.com
+GitHub: https://github.com/kevrith/superheros
 
 ## Description
 
@@ -85,7 +85,7 @@ The Superheroes API is a Flask-based RESTful web service that enables CRUD opera
 2. **Create a virtual environment**
    ```bash
    python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  
    ```
 
 3. **Install dependencies**
@@ -222,12 +222,6 @@ The API provides clear error messages and appropriate HTTP status codes:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## Support
-
-For issues, questions, or contributions:
-
-- **Email**: your-kevrith@gmail.com
-- **GitHub Issues**: [Create an issue](https://github.com/yourusername/repository/issues)
 
 ## License
 

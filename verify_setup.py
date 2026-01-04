@@ -12,10 +12,10 @@ from pathlib import Path
 def check_file(filepath, required=True):
     """Check if a file exists"""
     if Path(filepath).exists():
-        print(f"✅ {filepath} found")
+        print(f" {filepath} found")
         return True
     else:
-        status = "❌" if required else "⚠️"
+        status = "X" if required else "YES"
         print(f"{status} {filepath} {'missing (required)' if required else 'not found (optional)'}")
         return not required
 
@@ -23,10 +23,10 @@ def check_file(filepath, required=True):
 def check_directory(dirpath, required=True):
     """Check if a directory exists"""
     if Path(dirpath).exists() and Path(dirpath).is_dir():
-        print(f"✅ {dirpath}/ directory found")
+        print(f" {dirpath}/ directory found")
         return True
     else:
-        status = "❌" if required else "⚠️"
+        status = "X" if required else "YES"
         print(f"{status} {dirpath}/ {'missing (required)' if required else 'not found (optional)'}")
         return not required
 
@@ -35,10 +35,10 @@ def check_import(module_name):
     """Check if a Python module can be imported"""
     try:
         __import__(module_name)
-        print(f"✅ {module_name} module installed")
+        print(f" {module_name} module installed")
         return True
     except ImportError:
-        print(f"❌ {module_name} module not installed")
+        print(f" {module_name} module not installed")
         return False
 
 
@@ -46,10 +46,10 @@ def check_env_file():
     """Check .env file configuration"""
     env_path = Path('.env')
     if not env_path.exists():
-        print("❌ .env file not found")
+        print(" .env file not found")
         return False
 
-    print("✅ .env file found")
+    print(" .env file found")
 
     # Check for required variables
     required_vars = [
@@ -70,10 +70,10 @@ def check_env_file():
             missing_vars.append(var)
 
     if missing_vars:
-        print(f"⚠️  Missing environment variables: {', '.join(missing_vars)}")
+        print(f"  Missing environment variables: {', '.join(missing_vars)}")
         return False
     else:
-        print("✅ All required environment variables present")
+        print(" All required environment variables present")
         return True
 
 
@@ -131,7 +131,7 @@ def main():
 
     if not packages_ok:
         print()
-        print("⚠️  Some packages are missing. Run: pip install -r requirements.txt")
+        print("  Some packages are missing. Run: pip install -r requirements.txt")
 
     all_ok &= packages_ok
     print()
@@ -139,9 +139,9 @@ def main():
     # Check database
     print("Checking database...")
     if check_file('app.db', required=False):
-        print("✅ Database file exists")
+        print(" Database file exists")
     else:
-        print("⚠️  Database not initialized. Run migrations:")
+        print("   Database not initialized. Run migrations:")
         print("   flask db init")
         print("   flask db migrate -m 'Initial migration'")
         print("   flask db upgrade")
@@ -156,7 +156,7 @@ def main():
     # Final summary
     print("="*60)
     if all_ok:
-        print("✅ Setup verification PASSED")
+        print("  Setup verification PASSED")
         print()
         print("Your environment is ready! Next steps:")
         print("1. Review and update .env with your email credentials")
@@ -167,7 +167,7 @@ def main():
         print("3. Seed the database: python seed.py")
         print("4. Start the server: python app.py")
     else:
-        print("❌ Setup verification FAILED")
+        print("  Setup verification FAILED")
         print()
         print("Please address the issues above before proceeding.")
         print("See README.md for detailed setup instructions.")

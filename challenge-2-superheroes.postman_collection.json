@@ -1,0 +1,287 @@
+{
+  "info": {
+    "name": "Superheroes API",
+    "description": "Collection for testing the Superheroes API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Heroes",
+      "item": [
+        {
+          "name": "GET All Heroes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/heroes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["heroes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Hero by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/heroes/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["heroes", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Hero by ID (Not Found)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/heroes/999",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["heroes", "999"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Powers",
+      "item": [
+        {
+          "name": "GET All Powers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/powers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["powers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Power by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/powers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["powers", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Power by ID (Not Found)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5555/powers/999",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["powers", "999"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Power (Valid)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"This is a valid updated description that is at least 20 characters long\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/powers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["powers", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Power (Invalid - Too Short)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Too short\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/powers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["powers", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Power (Not Found)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"This is a valid description that is at least 20 characters long\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/powers/999",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["powers", "999"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Hero Powers",
+      "item": [
+        {
+          "name": "POST Create HeroPower (Valid)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"strength\": \"Strong\",\n  \"power_id\": 1,\n  \"hero_id\": 3\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/hero_powers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["hero_powers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Create HeroPower (Invalid Strength)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"strength\": \"Invalid\",\n  \"power_id\": 1,\n  \"hero_id\": 3\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/hero_powers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["hero_powers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Create HeroPower (Hero Not Found)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"strength\": \"Strong\",\n  \"power_id\": 1,\n  \"hero_id\": 999\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/hero_powers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["hero_powers"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Email",
+      "item": [
+        {
+          "name": "POST Send Test Email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"test@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5555/send-test-email",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5555",
+              "path": ["send-test-email"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
